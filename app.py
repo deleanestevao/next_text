@@ -13,7 +13,6 @@ def carrega_modelo():
     loaded_model = tf.keras.models.load_model('modelo_vidente.keras')
     with open('vectorizer.pkl','rb') as file:
       vectorizer = pickle.load(file)
-      
 return loaded_model, vectorizer
 
 def predict_next_words(modelo, vectorizer, text, max_sequence_len, top_k=3):
@@ -23,7 +22,6 @@ def predict_next_words(modelo, vectorizer, text, max_sequence_len, top_k=3):
     predicted_probs = modelo.predict(padded_text, verbose=0)[0] #probabilidade de ser a próxima palavra
     top_k_indices = np.argsort(predicted_probs)[-top_k:][::-1] #retorna o índice das palavras
     predicted_words = [vectorizer.get_vocabulary()[index] for index in top_k_indices]
-  
 return predicted_words
 
 
