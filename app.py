@@ -1,5 +1,9 @@
 import streamlit as st
 import gdown
+import tensowflow as tf
+import pickle
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+import numpy as np
 
 def carrega_modelo():
     # Corrigi o link do Google Drive (era "if=1..." mas o correto é "id=")
