@@ -9,8 +9,8 @@ def carrega_modelo():
     # Corrigi o link do Google Drive (era "if=1..." mas o correto é "id=")
     url = 'https://drive.google.com/uc?id=1yPP8wwVLbmrQjw0qLfs3DBHVR035tmzH'
 
-    gdown.download(url, 'modelo_vidente.keras')
-    loaded_model = tf.keras.models.load_model('modelo_vidente.keras')
+    gdown.download(url, 'modelo_vidente.keras',quiet=False)
+    loaded_model = tf.keras.models.load_model('modelo_vidente.keras',compile=False)
     with open('vectorizer.pkl','rb') as file:
       vectorizer = pickle.load(file)
     return loaded_model, vectorizer
